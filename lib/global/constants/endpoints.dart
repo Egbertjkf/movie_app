@@ -1,5 +1,5 @@
 class Endpoints {
-  final apiKey = 'enter your key here';
+  final apiKey = '';
   Uri getLiveMovieEndpoint() {
     return Uri.parse('https://api.themoviedb.org/3/movie/now_playing?api_key=$apiKey');
   }

@@ -37,6 +37,8 @@ class MovieBigPosterList extends StatelessWidget {
               },
             ),
           )
-        : Container();
+        : const Center(
+            child: CircularProgressIndicator(),
+          );
   }
 }

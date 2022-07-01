@@ -20,11 +20,16 @@ class HomeController extends GetxController {
   }
 
   Future<void> getLiveMoviesList() async {
+    liveMovieList = null;
+    update();
+
     liveMovieList = await _liveMovieRep.getMovies();
     update();
   }
 
   Future<void> getPopularMoviesList() async {
+    popularMovieList = null;
+    update();
     popularMovieList = await _popularMovieRep.getMovies();
     update();
   }

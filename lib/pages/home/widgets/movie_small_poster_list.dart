@@ -34,6 +34,8 @@ class MovieSmallPosterList extends StatelessWidget {
               ),
             ),
           )
-        : Container();
+        : const Center(
+            child: CircularProgressIndicator(),
+          );
   }
 }

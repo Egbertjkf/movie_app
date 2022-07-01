@@ -20,8 +20,11 @@ class HomePage extends StatelessWidget {
           backgroundColor: const Color.fromARGB(255, 17, 17, 17),
           actions: [
             IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.search),
+              onPressed: () {
+                _homeController.getLiveMoviesList();
+                _homeController.getPopularMoviesList();
+              },
+              icon: const Icon(Icons.refresh),
             ),
           ],
         ),
@@ -36,14 +39,23 @@ class HomePage extends StatelessWidget {
               // init: MyController(),
               initState: (_) {},
               builder: (_) {
-                return MovieBigPosterList(_homeController.liveMovieList);
+                return _homeController.liveMovieList?.length == 0
+                    ? Center(child: SectionTitleWidget('Erro ao Localizar Filmes'))
+                    : MovieBigPosterList(_homeController.liveMovieList);
               },
             ),
             const SectionTitleWidget('Filmes Populares'),
             GetBuilder<HomeController>(
               initState: (_) {},
               builder: (_) {
-                return MovieSmallPosterList(_homeController.popularMovieList);
+                return (_homeController.popularMovieList?.length == 0)
+                    ? Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Container(child: SectionTitleWidget('Erro ao Localizar Filmes')),
+                        ),
+                      )
+                    : MovieSmallPosterList(_homeController.popularMovieList);
               },
             )
           ],
